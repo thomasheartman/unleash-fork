@@ -84,7 +84,6 @@ const ErrorText = styled('p')(({ theme }) => ({
 
 /**
  * @deprecated use `/component/feature/FeatureStrategy/FeatureStrategyConstraints/LegalValuesSelector.tsx`
- * Remove with flag `addEditStrategy`
  */
 export const RestrictiveLegalValues = ({
     data,

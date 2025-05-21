@@ -9,7 +9,6 @@ interface IConstraintValueSearchProps {
 
 /**
  * @deprecated use `/component/feature/FeatureStrategy/FeatureStrategyConstraints/LegalValuesSelector.tsx`
- * Remove with flag `addEditStrategy`
  */
 export const ConstraintValueSearch = ({
     filter,

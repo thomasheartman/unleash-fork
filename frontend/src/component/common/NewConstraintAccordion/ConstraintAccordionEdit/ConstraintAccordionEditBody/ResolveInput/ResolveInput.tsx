@@ -63,7 +63,7 @@ const resolveLegalValues = (
 };
 
 /**
- * @deprecated; remove with `addEditStrategy` flag. Need an input? Prefer using specific input components.
+ * @deprecated. Need an input? Prefer using specific input components.
  *
  * For the case of `ProjectActionsFilterItem.tsx`: it already excludes legal
  * values and date operators. This leaves only free text and single value
