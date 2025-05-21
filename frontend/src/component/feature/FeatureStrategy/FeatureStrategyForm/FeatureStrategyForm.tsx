@@ -211,7 +211,6 @@ export const FeatureStrategyForm = ({
         environmentId,
     );
     const { strategyDefinition } = useStrategy(strategy?.name);
-    const addEditStrategy = useUiFlag('addEditStrategy');
 
     useEffect(() => {
         trackEvent('new-strategy-form', {
@@ -350,19 +349,8 @@ export const FeatureStrategyForm = ({
             <StyledHeaderBox>
                 <StyledTitle>
                     {formatStrategyName(strategy.name || '')}
-                    <ConditionallyRender
-                        condition={
-                            !addEditStrategy &&
-                            strategy.name === 'flexibleRollout'
-                        }
-                        show={
-                            <Badge color='success' sx={{ marginLeft: '1rem' }}>
-                                {strategy.parameters?.rollout}%
-                            </Badge>
-                        }
-                    />
                 </StyledTitle>
-                {foundEnvironment && !addEditStrategy ? (
+                {foundEnvironment ? (
                     <StyledEnvironmentBox>
                         <EnvironmentTypographyHeader>
                             Environment:

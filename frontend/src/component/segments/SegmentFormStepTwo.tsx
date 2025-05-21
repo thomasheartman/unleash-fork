@@ -122,7 +122,6 @@ export const SegmentFormStepTwo: React.FC<ISegmentFormPartTwoProps> = ({
             ? [CREATE_SEGMENT, UPDATE_PROJECT_SEGMENT]
             : [UPDATE_SEGMENT, UPDATE_PROJECT_SEGMENT];
     const { segmentValuesLimit } = useSegmentLimits();
-    const addEditStrategy = useUiFlag('addEditStrategy');
 
     const overSegmentValuesLimit: boolean = Boolean(
         segmentValuesLimit && segmentValuesCount > segmentValuesLimit,
@@ -202,25 +201,13 @@ export const SegmentFormStepTwo: React.FC<ISegmentFormPartTwoProps> = ({
                     }
                 />
                 <StyledConstraintContainer>
-                    {addEditStrategy ? (
-                        hasAccess(modePermission, project) && setConstraints ? (
-                            <EditableConstraintsList
-                                ref={constraintsAccordionListRef}
-                                constraints={constraints}
-                                setConstraints={setConstraints}
-                            />
-                        ) : null
-                    ) : (
-                        <ConstraintAccordionList
+                    {hasAccess(modePermission, project) && setConstraints ? (
+                        <EditableConstraintsList
                             ref={constraintsAccordionListRef}
                             constraints={constraints}
-                            setConstraints={
-                                hasAccess(modePermission, project)
-                                    ? setConstraints
-                                    : undefined
-                            }
+                            setConstraints={setConstraints}
                         />
-                    )}
+                        ) : null}
                 </StyledConstraintContainer>
             </StyledForm>
             <StyledButtonContainer>

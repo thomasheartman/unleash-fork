@@ -67,7 +67,6 @@ export const SegmentChangeDetails: FC<{
             : currentSegment?.name;
     const referenceSegment =
         changeRequestState === 'Applied' ? snapshotSegment : currentSegment;
-    const addEditStrategy = useUiFlag('addEditStrategy');
 
     return (
         <SegmentContainer conflict={change.conflict}>
@@ -116,16 +115,9 @@ export const SegmentChangeDetails: FC<{
                         </ChangeItemInfo>
                         <div>{actions}</div>
                     </ChangeItemCreateEditWrapper>
-                    {addEditStrategy ? (
-                        <ViewableConstraintsList
-                            constraints={change.payload.constraints}
-                        />
-                    ) : (
-                        <ConstraintAccordionList
-                            constraints={change.payload.constraints}
-                            showLabel={false}
-                        />
-                    )}
+                    <ViewableConstraintsList
+                        constraints={change.payload.constraints}
+                    />
                 </>
             )}
         </SegmentContainer>

@@ -27,7 +27,6 @@ export const MilestoneStrategySegment = ({
     segments: selectedSegments,
     setSegments: setSelectedSegments,
 }: IMilestoneStrategySegmentProps) => {
-    const addEditStrategy = useUiFlag('addEditStrategy');
     const { segments: allSegments } = useSegments();
     const { strategySegmentsLimit } = useSegmentLimits();
 
@@ -90,7 +89,7 @@ export const MilestoneStrategySegment = ({
                 options={autocompleteOptions}
                 onChange={onChange}
                 disabled={atStrategySegmentsLimit}
-                icon={addEditStrategy ? null : undefined}
+                icon={null}
                 width={'175px'}
             />
             <MilestoneStrategySegmentList

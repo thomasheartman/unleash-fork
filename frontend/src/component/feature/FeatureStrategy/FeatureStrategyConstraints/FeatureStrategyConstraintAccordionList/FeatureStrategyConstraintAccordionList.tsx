@@ -58,7 +58,6 @@ export const FeatureStrategyConstraintAccordionList = forwardRef<
         ref as RefObject<IConstraintAccordionListRef>,
     );
     const { limit, limitReached } = useConstraintLimit(constraints.length);
-    const addEditStrategy = useUiFlag('addEditStrategy');
 
     if (context.length === 0) {
         return null;
@@ -93,22 +92,13 @@ export const FeatureStrategyConstraintAccordionList = forwardRef<
                                 }
                             />
                         </StyledHelpIconBox>
-                        {addEditStrategy ? (
-                            setConstraints ? (
-                                <EditableConstraintsList
-                                    ref={ref}
-                                    setConstraints={setConstraints}
-                                    constraints={constraints}
-                                />
-                            ) : null
-                        ) : (
-                            <NewConstraintAccordionList
+                        {setConstraints ? (
+                            <EditableConstraintsList
                                 ref={ref}
                                 setConstraints={setConstraints}
                                 constraints={constraints}
-                                state={state}
                             />
-                        )}
+                        ) : null}
                         <Box
                             sx={(theme) => ({
                                 marginTop: theme.spacing(2),
@@ -134,14 +124,9 @@ export const FeatureStrategyConstraintAccordionList = forwardRef<
                         >
                             Add constraint
                         </Button>
-                        <ConditionallyRender
-                            condition={Boolean(addEditStrategy)}
-                            show={
-                                <RecentlyUsedConstraints
-                                    setConstraints={setConstraints}
-                                    constraints={constraints}
-                                />
-                            }
+                        <RecentlyUsedConstraints
+                            setConstraints={setConstraints}
+                            constraints={constraints}
                         />
                     </div>
                 }

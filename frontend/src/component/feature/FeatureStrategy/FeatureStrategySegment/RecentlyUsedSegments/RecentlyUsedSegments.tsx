@@ -32,10 +32,8 @@ export const RecentlyUsedSegments = ({
 }: RecentlyUsedSegmentsProps) => {
     const { items: recentlyUsedSegmentIds } = useRecentlyUsedSegments();
     const { segments: allSegments } = useSegments();
-    const addEditStrategyEnabled = useUiFlag('addEditStrategy');
 
     if (
-        !addEditStrategyEnabled ||
         recentlyUsedSegmentIds.length === 0 ||
         !setSegments ||
         !allSegments
