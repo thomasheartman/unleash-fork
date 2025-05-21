@@ -54,7 +54,7 @@ process.nextTick(async () => {
                         cleanupReminder: true,
                         strictSchemaValidation: true,
                         registerFrontendClient: true,
-                        featureLinks: true,
+                        // featureLinks flag has been removed
                         projectLinkTemplates: true,
                         reportUnknownFlags: true,
                     },

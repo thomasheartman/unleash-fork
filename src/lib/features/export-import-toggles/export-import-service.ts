@@ -303,9 +303,7 @@ export default class ExportImportService
         await this.importTagTypes(dto, auditUser);
         await this.importTags(dto, auditUser);
         await this.importContextFields(dto, auditUser);
-        if (this.flagResolver.isEnabled('featureLinks')) {
-            await this.importLinks(dto, auditUser);
-        }
+        // featureLinks feature flag has been removed, always false
     }
 
     async import(
@@ -907,7 +905,7 @@ export default class ExportImportService
             segments,
             tagTypes,
             featureDependencies,
-            featureLinks,
+            /* featureLinks removed */
         ] = await Promise.all([
             this.toggleStore.getAllByNames(featureNames),
             await this.featureEnvironmentStore.getAllByFeatures(
@@ -924,9 +922,8 @@ export default class ExportImportService
             this.segmentReadModel.getAll(),
             this.tagTypeStore.getAll(),
             this.dependentFeaturesReadModel.getDependencies(featureNames),
-            this.flagResolver.isEnabled('featureLinks')
-                ? this.featureLinksReadModel.getLinks(...featureNames)
-                : Promise.resolve([]),
+            // featureLinks feature flag has been removed, always false
+            Promise.resolve([]),
         ]);
         this.addSegmentsToStrategies(featureStrategies, strategySegments);
         const filteredContextFields = contextFields
@@ -975,17 +972,9 @@ export default class ExportImportService
             dependencies: dependencies.map((d) => d.dependency),
         }));
 
-        const groupedFeatureLinks = groupBy(featureLinks, 'feature');
-        const mappedFeatureLinks = Object.entries(groupedFeatureLinks).map(
-            ([feature, links]) => ({
-                feature,
-                links: links.map((link) => ({
-                    id: link.id,
-                    url: link.url,
-                    title: link.title,
-                })),
-            }),
-        );
+        // featureLinks feature flag has been removed, always empty array
+        // const featureLinks: any[] = []; // Variable renamed to avoid conflict
+        const mappedFeatureLinks: any[] = [];
 
         const result = {
             features: features.map((item) => {

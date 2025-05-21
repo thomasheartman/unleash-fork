@@ -1114,9 +1114,8 @@ export class FeatureToggleService {
                 this.featureCollaboratorsReadModel.getFeatureCollaborators(
                     featureName,
                 ),
-                this.flagResolver.isEnabled('featureLinks')
-                    ? this.featureLinksReadModel.getLinks(featureName)
-                    : Promise.resolve([]),
+                // featureLinks feature flag has been removed, always false
+                Promise.resolve([]),
             ]);
 
         if (environmentVariants) {

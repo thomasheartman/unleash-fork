@@ -27,7 +27,6 @@ import type {
     IFeatureToggle,
 } from '../../../../../interfaces/featureToggle.ts';
 import AddIcon from '@mui/icons-material/Add';
-import { useUiFlag } from 'hooks/useUiFlag';
 import { Badge } from 'component/common/Badge/Badge';
 import LinkIcon from '@mui/icons-material/Link';
 import { UPDATE_FEATURE } from '../../../../providers/AccessProvider/permissions.ts';
@@ -246,17 +245,10 @@ const FeatureOverviewMetaData: FC<FeatureOverviewMetaDataProps> = ({
 
     const showDependentFeatures = useShowDependentFeatures(project);
 
-    const featureLinksEnabled = useUiFlag('featureLinks');
+    // featureLinks feature flag has been removed, always false
 
     return (
         <>
-            {featureLinksEnabled ? (
-                <FeatureLinks
-                    links={feature.links || []}
-                    project={feature.project}
-                    feature={feature.name}
-                />
-            ) : null}
             <StyledMetaDataContainer>
                 <div>
                     <StyledTitle>Flag details</StyledTitle>

@@ -661,9 +661,7 @@ export function registerPrometheusMetrics(
         help: 'Count most popular domains used in feature links',
         labelNames: ['domain'],
         query: () => {
-            if (flagResolver.isEnabled('featureLinks')) {
-                return stores.featureLinkReadModel.getTopDomains();
-            }
+            // featureLinks feature flag has been removed, always false
             return Promise.resolve([]);
         },
         map: (result) =>

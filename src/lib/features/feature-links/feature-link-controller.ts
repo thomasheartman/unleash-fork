@@ -108,20 +108,8 @@ export default class FeatureLinkController extends Controller {
         >,
         res: Response,
     ): Promise<void> {
-        if (!this.flagResolver.isEnabled('featureLinks')) {
-            res.status(404).end();
-        }
-        const { projectId, featureName } = req.params;
-
-        await this.transactionalFeatureLinkService.transactional((service) =>
-            service.createLink(
-                projectId,
-                { ...req.body, featureName },
-                req.audit,
-            ),
-        );
-
-        res.status(204).end();
+        // featureLinks feature flag has been removed, always false
+        res.status(404).end();
     }
 
     async updateFeatureLink(
@@ -132,20 +120,8 @@ export default class FeatureLinkController extends Controller {
         >,
         res: Response,
     ): Promise<void> {
-        if (!this.flagResolver.isEnabled('featureLinks')) {
-            res.status(404).end();
-        }
-        const { projectId, linkId, featureName } = req.params;
-
-        await this.transactionalFeatureLinkService.transactional((service) =>
-            service.updateLink(
-                { projectId, linkId },
-                { ...req.body, featureName },
-                req.audit,
-            ),
-        );
-
-        res.status(204).end();
+        // featureLinks feature flag has been removed, always false
+        res.status(404).end();
     }
 
     async deleteFeatureLink(
@@ -156,15 +132,7 @@ export default class FeatureLinkController extends Controller {
         >,
         res: Response,
     ): Promise<void> {
-        if (!this.flagResolver.isEnabled('featureLinks')) {
-            res.status(404).end();
-        }
-        const { projectId, linkId } = req.params;
-
-        await this.transactionalFeatureLinkService.transactional((service) =>
-            service.deleteLink({ projectId, linkId }, req.audit),
-        );
-
-        res.status(204).end();
+        // featureLinks feature flag has been removed, always false
+        res.status(404).end();
     }
 }
