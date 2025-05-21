@@ -54,7 +54,7 @@ process.nextTick(async () => {
                         cleanupReminder: true,
                         strictSchemaValidation: true,
                         registerFrontendClient: true,
-                        featureLinks: true,
+
                         projectLinkTemplates: true,
                         reportUnknownFlags: true,
                     },

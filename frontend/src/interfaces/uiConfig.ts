@@ -89,7 +89,7 @@ export type UiFlags = {
     addEditStrategy?: boolean;
     cleanupReminder?: boolean;
     registerFrontendClient?: boolean;
-    featureLinks?: boolean;
+
     projectLinkTemplates?: boolean;
 };
 
