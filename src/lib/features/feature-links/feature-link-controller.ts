@@ -108,7 +108,6 @@ export default class FeatureLinkController extends Controller {
         >,
         res: Response,
     ): Promise<void> {
-        // featureLinks feature flag has been removed, always false
         res.status(404).end();
     }
 
@@ -120,7 +119,6 @@ export default class FeatureLinkController extends Controller {
         >,
         res: Response,
     ): Promise<void> {
-        // featureLinks feature flag has been removed, always false
         res.status(404).end();
     }
 
@@ -132,7 +130,6 @@ export default class FeatureLinkController extends Controller {
         >,
         res: Response,
     ): Promise<void> {
-        // featureLinks feature flag has been removed, always false
         res.status(404).end();
     }
 }

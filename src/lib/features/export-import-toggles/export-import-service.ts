@@ -303,7 +303,6 @@ export default class ExportImportService
         await this.importTagTypes(dto, auditUser);
         await this.importTags(dto, auditUser);
         await this.importContextFields(dto, auditUser);
-        // featureLinks feature flag has been removed, always false
     }
 
     async import(
@@ -905,7 +904,6 @@ export default class ExportImportService
             segments,
             tagTypes,
             featureDependencies,
-            /* featureLinks removed */
         ] = await Promise.all([
             this.toggleStore.getAllByNames(featureNames),
             await this.featureEnvironmentStore.getAllByFeatures(
@@ -922,7 +920,6 @@ export default class ExportImportService
             this.segmentReadModel.getAll(),
             this.tagTypeStore.getAll(),
             this.dependentFeaturesReadModel.getDependencies(featureNames),
-            // featureLinks feature flag has been removed, always false
             Promise.resolve([]),
         ]);
         this.addSegmentsToStrategies(featureStrategies, strategySegments);
@@ -972,8 +969,6 @@ export default class ExportImportService
             dependencies: dependencies.map((d) => d.dependency),
         }));
 
-        // featureLinks feature flag has been removed, always empty array
-        // const featureLinks: any[] = []; // Variable renamed to avoid conflict
         const mappedFeatureLinks: any[] = [];
 
         const result = {

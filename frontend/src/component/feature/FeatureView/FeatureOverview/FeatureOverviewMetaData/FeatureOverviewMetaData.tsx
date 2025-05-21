@@ -245,8 +245,6 @@ const FeatureOverviewMetaData: FC<FeatureOverviewMetaDataProps> = ({
 
     const showDependentFeatures = useShowDependentFeatures(project);
 
-    // featureLinks feature flag has been removed, always false
-
     return (
         <>
             <StyledMetaDataContainer>
