@@ -48,7 +48,7 @@ import { Badge } from 'component/common/Badge/Badge';
 import EnvironmentIcon from 'component/common/EnvironmentIcon/EnvironmentIcon';
 import { UpgradeChangeRequests } from '../../FeatureView/FeatureOverview/FeatureOverviewEnvironments/FeatureOverviewEnvironment/UpgradeChangeRequests/UpgradeChangeRequests.tsx';
 import { ConstraintSeparator } from 'component/common/ConstraintsList/ConstraintSeparator/ConstraintSeparator';
-import { useUiFlag } from 'hooks/useUiFlag.ts';
+
 
 interface IFeatureStrategyFormProps {
     feature: IFeatureToggle;
@@ -350,7 +350,7 @@ export const FeatureStrategyForm = ({
                 <StyledTitle>
                     {formatStrategyName(strategy.name || '')}
                 </StyledTitle>
-                {foundEnvironment ? (
+                {foundEnvironment && (
                     <StyledEnvironmentBox>
                         <EnvironmentTypographyHeader>
                             Environment:
@@ -366,7 +366,7 @@ export const FeatureStrategyForm = ({
                             </EnvironmentTypography>
                         </EnvironmentIconBox>
                     </StyledEnvironmentBox>
-                ) : null}
+                )}
             </StyledHeaderBox>
 
             <StyledAlertBox>
